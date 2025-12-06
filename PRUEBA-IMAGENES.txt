@@ -1,0 +1,87 @@
+=================================================================
+  SISTEMA DE CARGA DE IMÁGENES - LISTO PARA PROBAR
+=================================================================
+
+✅ TODO IMPLEMENTADO
+
+Archivos actualizados:
+1. admin.html - Botones de carga
+2. admin-styles.css - Estilos
+3. image-upload-handler.js - Lógica (NUEVO)
+
+=================================================================
+🔄 CÓMO PROBAR:
+=================================================================
+
+PASO 1: Cerrar Todo
+───────────────────
+1. Cierra el navegador completamente
+2. Cierra VS Code o editores
+
+PASO 2: Abrir de Nuevo
+───────────────────────
+1. Abre admin.html
+2. Login: soledad123
+3. Clic en "Agregar Producto"
+
+PASO 3: Buscar los Botones
+───────────────────────────
+Deberías ver:
+
+Imagen Principal *
+┌─────────────────────────────────┐
+│  [📷 Seleccionar Imagen]        │
+│  JPG, PNG o WEBP (máx. 5MB)     │
+└─────────────────────────────────┘
+
+PASO 4: Subir Imagen
+───────────────────────
+1. Clic en "📷 Seleccionar Imagen"
+2. Elige una foto
+3. Verás vista previa
+4. Botón ❌ para eliminar
+
+PASO 5: Guardar
+───────────────
+1. Llena los campos
+2. Guarda el producto
+3. Ve a index.html
+4. ¡Verifica que aparece!
+
+=================================================================
+❓ SI NO VES LOS BOTONES:
+=================================================================
+
+Solución 1: Limpiar Caché
+───────────────────────────
+1. Ctrl + Shift + Delete
+2. Borrar "Imágenes y archivos en caché"
+3. Ctrl + F5 (forzar recarga)
+
+Solución 2: Verificar Consola
+───────────────────────────────
+1. F12 (abrir herramientas)
+2. Pestaña "Console"
+3. Busca errores en rojo
+4. Cópialos y me los pasas
+
+=================================================================
+💡 TIPS:
+=================================================================
+
+✅ Cierra TODO antes de probar
+✅ Usa Ctrl+F5 para forzar recarga
+✅ Prueba con imagen pequeña (menos de 1MB)
+✅ Verifica la consola si hay problemas
+
+=================================================================
+
+¡PRUÉBALO AHORA! 🚀
+
+1. Cierra el navegador
+2. Abre admin.html
+3. Login: soledad123
+4. Agregar Producto
+5. Busca "📷 Seleccionar Imagen"
+
+=================================================================

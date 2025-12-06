@@ -1,0 +1,349 @@
+=================================================================
+  GUÍA: MEJORES IMÁGENES PARA TU TIENDA
+=================================================================
+
+✅ LA IMAGEN ACTUAL SE VE PERFECTA
+
+Ahora te explico qué tipo de imágenes necesitas para que
+TODAS se vean así de bien.
+
+=================================================================
+📸 ESPECIFICACIONES IDEALES:
+=================================================================
+
+TAMAÑO RECOMENDADO:
+- Ancho: 800px - 1200px
+- Alto: 800px - 1200px
+- Proporción: Cuadrada (1:1) o vertical (3:4)
+
+FORMATO:
+- JPG (recomendado) - Más liviano
+- PNG - Si necesitas transparencia
+- WEBP - Más moderno, más pequeño
+
+PESO:
+- Antes de subir: 500KB - 2MB
+- Después de optimizar: 200KB - 400KB
+
+CALIDAD:
+- Alta resolución
+- Buena iluminación
+- Fondo limpio
+
+=================================================================
+🎯 TIPOS DE FOTOS PARA ROPA:
+=================================================================
+
+1. FOTO PRINCIPAL (Obligatoria)
+   ┌─────────────────┐
+   │                 │
+   │   Producto      │
+   │   completo      │
+   │   de frente     │
+   │                 │
+   └─────────────────┘
+   - Vista frontal completa
+   - Fondo blanco o neutro
+   - Producto centrado
+   - Buena iluminación
+
+2. FOTO DETALLE (Opcional)
+   ┌─────────────────┐
+   │                 │
+   │   Textura,      │
+   │   botones,      │
+   │   costuras      │
+   │                 │
+   └─────────────────┘
+   - Acercamiento de detalles
+   - Muestra calidad
+   - Texturas visibles
+
+3. FOTO DE ESPALDA (Opcional)
+   ┌─────────────────┐
+   │                 │
+   │   Vista         │
+   │   posterior     │
+   │   del producto  │
+   │                 │
+   └─────────────────┘
+   - Vista trasera
+   - Muestra diseño completo
+   - Misma iluminación
+
+=================================================================
+📐 PROPORCIONES IDEALES:
+=================================================================
+
+MEJOR: CUADRADA (1:1)
+┌──────────┐
+│          │
+│ 800x800  │
+│          │
+└──────────┘
+✅ Se ve perfecta en todos lados
+✅ No se corta
+✅ Fácil de centrar
+
+BUENA: VERTICAL (3:4)
+┌────────┐
+│        │
+│        │
+│ 600x800│
+│        │
+│        │
+└────────┘
+✅ Ideal para ropa
+✅ Muestra producto completo
+✅ Se adapta bien
+
+EVITAR: HORIZONTAL (4:3)
+┌──────────────┐
+│   800x600    │
+└──────────────┘
+❌ Se ve pequeña en vertical
+❌ Desperdicia espacio
+❌ No ideal para ropa
+
+=================================================================
+💡 CÓMO TOMAR BUENAS FOTOS:
+=================================================================
+
+ILUMINACIÓN:
+✅ Luz natural (cerca de ventana)
+✅ Luz uniforme (sin sombras fuertes)
+✅ Evitar flash directo
+✅ Día nublado = luz perfecta
+
+FONDO:
+✅ Blanco o gris claro
+✅ Liso, sin arrugas
+✅ Sin distracciones
+✅ Maniquí o modelo
+
+ÁNGULO:
+✅ A la altura del producto
+✅ Ligeramente desde arriba
+✅ Producto centrado
+✅ Sin inclinación
+
+DISTANCIA:
+✅ Producto ocupa 70-80% de la foto
+✅ Espacio alrededor
+✅ No muy cerca
+✅ No muy lejos
+
+=================================================================
+🔧 HERRAMIENTAS PARA MEJORAR FOTOS:
+=================================================================
+
+GRATIS EN LÍNEA:
+1. Remove.bg
+   - Quitar fondo automáticamente
+   - Dejar solo el producto
+   - Fondo blanco perfecto
+
+2. TinyPNG.com
+   - Comprimir imágenes
+   - Reducir tamaño sin perder calidad
+   - Muy fácil de usar
+
+3. Squoosh.app
+   - Optimizar imágenes
+   - Cambiar formato
+   - Ajustar calidad
+
+4. Canva.com
+   - Redimensionar imágenes
+   - Agregar fondo blanco
+   - Ajustar brillo/contraste
+
+EN EL CELULAR:
+1. Snapseed (Google)
+   - Editar fotos
+   - Ajustar brillo
+   - Mejorar colores
+
+2. Background Eraser
+   - Quitar fondo
+   - Dejar producto solo
+
+3. Photo Resizer
+   - Cambiar tamaño
+   - Optimizar peso
+
+=================================================================
+📱 FOTOS DESDE EL CELULAR:
+=================================================================
+
+CONFIGURACIÓN:
+✅ Resolución máxima
+✅ HDR activado
+✅ Cuadrícula activada (para centrar)
+✅ Limpiar lente
+
+TÉCNICA:
+1. Coloca el producto sobre fondo blanco
+2. Usa luz natural (ventana)
+3. Mantén el celular firme
+4. Toma varias fotos
+5. Elige la mejor
+
+DESPUÉS DE TOMAR:
+1. Edita en Snapseed
+   - Ajusta brillo
+   - Mejora contraste
+   - Corrige colores
+
+2. Quita fondo en Remove.bg
+   - Sube la foto
+   - Descarga sin fondo
+   - Agrega fondo blanco
+
+3. Optimiza en TinyPNG
+   - Reduce tamaño
+   - Mantiene calidad
+
+=================================================================
+✅ CHECKLIST ANTES DE SUBIR:
+=================================================================
+
+VERIFICAR:
+□ Tamaño: 800x800px o similar
+□ Formato: JPG
+□ Peso: Menos de 2MB
+□ Fondo: Blanco o neutro
+□ Iluminación: Buena y uniforme
+□ Producto: Centrado y completo
+□ Enfoque: Nítido, no borroso
+□ Colores: Reales, no saturados
+
+=================================================================
+🎯 EJEMPLOS DE BUENAS FOTOS:
+=================================================================
+
+PERFECTO:
+✅ Blusa en maniquí
+✅ Fondo blanco liso
+✅ Luz natural uniforme
+✅ Producto centrado
+✅ 800x800px
+✅ 300KB
+
+BUENO:
+✅ Vestido colgado
+✅ Fondo gris claro
+✅ Buena iluminación
+✅ Producto completo visible
+✅ 1000x1200px
+✅ 500KB
+
+EVITAR:
+❌ Foto en el piso
+❌ Fondo desordenado
+❌ Sombras fuertes
+❌ Producto cortado
+❌ Muy pequeña (300x300px)
+❌ Muy pesada (5MB)
+
+=================================================================
+📊 FLUJO DE TRABAJO RECOMENDADO:
+=================================================================
+
+1. TOMAR FOTO
+   - Celular o cámara
+   - Luz natural
+   - Fondo blanco
+   - Producto centrado
+
+2. EDITAR
+   - Snapseed o Canva
+   - Ajustar brillo
+   - Mejorar contraste
+   - Corregir colores
+
+3. QUITAR FONDO (Opcional)
+   - Remove.bg
+   - Dejar solo producto
+   - Agregar fondo blanco
+
+4. REDIMENSIONAR
+   - Canva o Photo Resizer
+   - 800x800px ideal
+   - Mantener proporción
+
+5. OPTIMIZAR
+   - TinyPNG
+   - Reducir a 300-500KB
+   - Mantener calidad
+
+6. SUBIR
+   - Admin panel
+   - Botón "📷 Seleccionar Imagen"
+   - Sistema optimiza automáticamente
+   - ¡Listo!
+
+=================================================================
+💰 INVERSIÓN RECOMENDADA:
+=================================================================
+
+BÁSICO (Gratis):
+- Celular con buena cámara
+- Luz natural (ventana)
+- Cartulina blanca (fondo)
+- Apps gratis (Snapseed, Remove.bg)
+
+INTERMEDIO ($20-50):
+- Fondo fotográfico blanco
+- Aro de luz LED
+- Trípode para celular
+- Apps premium
+
+PROFESIONAL ($100+):
+- Cámara DSLR
+- Kit de iluminación
+- Fondo profesional
+- Maniquí
+- Software de edición
+
+RECOMENDACIÓN:
+Empieza con BÁSICO. Si vendes bien, invierte en INTERMEDIO.
+
+=================================================================
+🎊 RESUMEN RÁPIDO:
+=================================================================
+
+TAMAÑO IDEAL:
+800x800px (cuadrada)
+
+FORMATO:
+JPG
+
+PESO:
+300-500KB (después de optimizar)
+
+FONDO:
+Blanco o neutro
+
+ILUMINACIÓN:
+Natural, uniforme
+
+HERRAMIENTAS:
+- Remove.bg (quitar fondo)
+- TinyPNG (optimizar)
+- Snapseed (editar)
+
+PROCESO:
+1. Tomar foto con buena luz
+2. Editar (brillo, contraste)
+3. Quitar fondo (opcional)
+4. Redimensionar a 800x800px
+5. Optimizar con TinyPNG
+6. Subir al admin
+7. ¡Listo!
+
+=================================================================
+
+¿Necesitas ayuda con algún paso específico? 😊
+
+=================================================================

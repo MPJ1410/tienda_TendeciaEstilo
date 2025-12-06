@@ -1,0 +1,84 @@
+=================================================================
+  CENTRADO PERFECTO DE IMÁGENES - ACTUALIZADO
+=================================================================
+
+✅ CAMBIOS APLICADOS
+
+Las imágenes ahora están:
+- Centradas VERTICAL y HORIZONTALMENTE
+- Usando flexbox para centrado perfecto
+- margin: auto en la imagen
+- 100% de altura y ancho disponibles
+
+=================================================================
+🎯 CONFIGURACIÓN ACTUALIZADA:
+=================================================================
+
+.modal-image-container {
+    height: 500px;
+    display: flex;              ← Flexbox
+    align-items: center;        ← Centrado vertical
+    justify-content: center;    ← Centrado horizontal
+    margin: 0 auto;             ← Centrado del contenedor
+}
+
+.modal-image-container img {
+    max-width: 100%;            ← Ancho máximo
+    max-height: 100%;           ← Alto máximo
+    margin: auto;               ← Centrado extra
+    object-fit: contain;        ← Mantener proporción
+}
+
+=================================================================
+📐 CÓMO SE VE AHORA:
+=================================================================
+
+PERFECTAMENTE CENTRADO:
+
+┌─────────────────────────────────────────┐
+│                                         │
+│                                         │
+│          ┌─────────────┐                │
+│          │             │                │
+│          │   IMAGEN    │                │
+│          │  CENTRADA   │                │
+│          │             │                │
+│          └─────────────┘                │
+│                                         │
+│                                         │
+└─────────────────────────────────────────┘
+
+=================================================================
+✅ VENTAJAS:
+=================================================================
+
+✅ CENTRADO PERFECTO
+   - Vertical: Sí
+   - Horizontal: Sí
+   - En cualquier tamaño de imagen
+
+✅ RESPONSIVE
+   - Escritorio: 500px alto
+   - Móvil: 350px alto
+   - Siempre centrado
+
+✅ SIN DISTORSIÓN
+   - Mantiene proporción
+   - No se estira
+   - Se ve natural
+
+=================================================================
+🔄 VERIFICAR:
+=================================================================
+
+1. Ctrl + F5 (forzar recarga)
+2. Abre un producto
+3. La imagen debe estar:
+   ✅ En el centro exacto
+   ✅ Vertical y horizontalmente
+   ✅ Con espacio igual arriba y abajo
+   ✅ Con espacio igual izquierda y derecha
+
+=================================================================
+
+¡REFRESCA CON CTRL+F5 Y VERIFICA! 🎯

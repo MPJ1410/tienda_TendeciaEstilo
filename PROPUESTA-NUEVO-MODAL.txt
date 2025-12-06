@@ -1,0 +1,143 @@
+=================================================================
+  PROPUESTA: NUEVO DISEÑO DEL MODAL DE PRODUCTO
+=================================================================
+
+🎨 VERSIÓN MEJORADA - MÁS MODERNA Y ATRACTIVA
+
+Voy a mejorar:
+1. Layout más equilibrado
+2. Imagen más grande
+3. Mejor jerarquía visual
+4. Más espacio para respirar
+5. Diseño más premium
+
+=================================================================
+📐 NUEVO DISEÑO:
+=================================================================
+
+┌─────────────────────────────────────────────────────────┐
+│  [X]                                                    │
+│                                                         │
+│  ┌──────────────────────┐  ┌────────────────────────┐  │
+│  │                      │  │                        │  │
+│  │                      │  │  Blusa Casual Moderna  │  │
+│  │                      │  │  ─────────────────     │  │
+│  │      IMAGEN          │  │  MUJER                 │  │
+│  │      GRANDE          │  │                        │  │
+│  │      550px           │  │  S/ 45.99              │  │
+│  │                      │  │                        │  │
+│  │  [<]  [Dots]  [>]    │  │  Blusa versátil...     │  │
+│  │                      │  │                        │  │
+│  └──────────────────────┘  │  Tallas: [S][M][L]     │  │
+│                            │                        │  │
+│                            │  Colores: ● ● ●        │  │
+│                            │                        │  │
+│                            │  Stock: 9 unidades     │  │
+│                            │                        │  │
+│                            │  [📱 WhatsApp]         │  │
+│                            │  [🛒 Agregar]          │  │
+│                            │                        │  │
+│                            └────────────────────────┘  │
+└─────────────────────────────────────────────────────────┘
+
+=================================================================
+✨ MEJORAS INCLUIDAS:
+=================================================================
+
+1. IMAGEN MÁS GRANDE
+   - 550px de alto (antes 500px)
+   - Ocupa 60% del modal
+   - Más impacto visual
+
+2. INFORMACIÓN ORGANIZADA
+   - Título más grande
+   - Precio destacado
+   - Secciones bien definidas
+
+3. BOTONES MEJORADOS
+   - Dos botones de acción
+   - WhatsApp + Agregar al carrito
+   - Más llamativos
+
+4. ESPACIADO
+   - Más aire entre elementos
+   - Mejor legibilidad
+   - Menos amontonado
+
+5. COLORES
+   - Badges de colores más grandes
+   - Más fácil de ver
+   - Mejor contraste
+
+=================================================================
+🎨 CARACTERÍSTICAS NUEVAS:
+=================================================================
+
+✨ PRECIO MÁS DESTACADO
+   - Tamaño más grande
+   - Color dorado brillante
+   - Sombra sutil
+
+✨ BADGES DE TALLAS
+   - Más grandes
+   - Hover effect
+   - Selección visual
+
+✨ INDICADORES DE GALERÍA
+   - Dots más visibles
+   - Animación suave
+   - Mejor feedback
+
+✨ BOTÓN AGREGAR AL CARRITO
+   - Nuevo botón secundario
+   - Preparado para futuro
+   - Diseño moderno
+
+✨ SECCIÓN DE STOCK
+   - Más visible
+   - Con icono
+   - Color según disponibilidad
+
+=================================================================
+📱 RESPONSIVE:
+=================================================================
+
+ESCRITORIO (> 992px):
+┌─────────────────────────────────┐
+│  Imagen (60%)  │  Info (40%)    │
+└─────────────────────────────────┘
+
+TABLET (768px - 992px):
+┌─────────────────────────────────┐
+│  Imagen (55%)  │  Info (45%)    │
+└─────────────────────────────────┘
+
+MÓVIL (< 768px):
+┌─────────────────┐
+│     Imagen      │
+├─────────────────┤
+│   Información   │
+└─────────────────┘
+
+=================================================================
+🎯 IMPLEMENTACIÓN:
+=================================================================
+
+¿Quieres que implemente este nuevo diseño?
+
+Incluirá:
+✅ Modal más ancho y moderno
+✅ Imagen más grande (550px)
+✅ Mejor distribución de espacio
+✅ Precio más destacado
+✅ Badges de tallas más grandes
+✅ Colores más visibles
+✅ Botón de agregar al carrito (preparado)
+✅ Animaciones suaves
+✅ Diseño responsive mejorado
+
+Tiempo de implementación: ~30 minutos
+
+=================================================================
+
+¿Procedo con la implementación del nuevo diseño? 😊
