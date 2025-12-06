@@ -1,0 +1,183 @@
+═══════════════════════════════════════════════════════════════
+  GUÍA: SUBIR TU TIENDA A GITHUB Y NETLIFY
+═══════════════════════════════════════════════════════════════
+
+📋 PASO 1: ABRIR POWERSHELL EN LA CARPETA DEL PROYECTO
+───────────────────────────────────────────────────────────────
+
+1. Ve a: C:\Users\MIKI\Desktop\TENDENCIA Y ESTILO
+2. Haz clic derecho en un espacio vacío
+3. Selecciona "Abrir en Terminal" o "PowerShell aquí"
+
+═══════════════════════════════════════════════════════════════
+📦 PASO 2: INICIALIZAR GIT
+═══════════════════════════════════════════════════════════════
+
+Copia y pega estos comandos UNO POR UNO:
+
+# 1. Inicializar Git
+git init
+
+# 2. Configurar tu nombre (CAMBIA "Tu Nombre")
+git config --global user.name "Tu Nombre"
+
+# 3. Configurar tu email (CAMBIA el email)
+git config --global user.email "tu@email.com"
+
+# 4. Agregar todos los archivos
+git add .
+
+# 5. Hacer el primer commit
+git commit -m "Primer commit - Tienda Tendencia y Estilo"
+
+═══════════════════════════════════════════════════════════════
+🌐 PASO 3: CREAR REPOSITORIO EN GITHUB
+═══════════════════════════════════════════════════════════════
+
+1. Ve a: https://github.com
+2. Haz clic en el "+" (arriba derecha)
+3. Selecciona "New repository"
+4. Llena:
+   - Repository name: tendencia-y-estilo
+   - Description: Tienda online de ropa
+   - Public o Private (tu elección)
+   - ❌ NO marques nada más
+5. Haz clic en "Create repository"
+
+6. COPIA la URL que aparece, algo como:
+   https://github.com/TU-USUARIO/tendencia-y-estilo.git
+
+═══════════════════════════════════════════════════════════════
+📤 PASO 4: SUBIR A GITHUB
+═══════════════════════════════════════════════════════════════
+
+En PowerShell, ejecuta (REEMPLAZA con TU URL):
+
+# 1. Conectar con GitHub
+git remote add origin https://github.com/TU-USUARIO/tendencia-y-estilo.git
+
+# 2. Cambiar a rama main
+git branch -M main
+
+# 3. Subir archivos
+git push -u origin main
+
+Si te pide usuario y contraseña:
+- Usuario: Tu usuario de GitHub
+- Contraseña: Usa un Personal Access Token (ver abajo)
+
+───────────────────────────────────────────────────────────────
+🔑 CREAR PERSONAL ACCESS TOKEN (Si te pide contraseña):
+───────────────────────────────────────────────────────────────
+
+1. Ve a GitHub → Settings (tu perfil)
+2. Developer settings (abajo a la izquierda)
+3. Personal access tokens → Tokens (classic)
+4. Generate new token (classic)
+5. Marca: "repo" (todos los checks de repositorio)
+6. Generate token
+7. COPIA el token (solo se muestra una vez)
+8. Úsalo como contraseña cuando Git te lo pida
+
+═══════════════════════════════════════════════════════════════
+🌍 PASO 5: SUBIR A NETLIFY
+═══════════════════════════════════════════════════════════════
+
+1. Ve a: https://netlify.com
+2. Haz clic en "Sign up" (o "Log in" si ya tienes cuenta)
+3. Inicia sesión con GitHub
+4. Haz clic en "Add new site"
+5. Selecciona "Import an existing project"
+6. Selecciona "GitHub"
+7. Autoriza a Netlify (si te lo pide)
+8. Busca tu repositorio: "tendencia-y-estilo"
+9. Haz clic en el repositorio
+10. Configuración:
+    - Branch to deploy: main
+    - Build command: (déjalo VACÍO)
+    - Publish directory: (déjalo VACÍO)
+11. Haz clic en "Deploy site"
+
+ESPERA 1-2 MINUTOS...
+
+═══════════════════════════════════════════════════════════════
+🎊 PASO 6: OBTENER TU URL
+═══════════════════════════════════════════════════════════════
+
+Netlify te dará una URL como:
+https://random-name-123456.netlify.app
+
+Para cambiar el nombre:
+1. Site settings
+2. Change site name
+3. Escribe: tendencia-y-estilo
+4. Tu URL será: https://tendencia-y-estilo.netlify.app
+
+═══════════════════════════════════════════════════════════════
+✅ VERIFICAR QUE TODO FUNCIONE
+═══════════════════════════════════════════════════════════════
+
+Abre tu URL de Netlify y verifica:
+
+✅ La tienda se ve bien
+✅ Los productos aparecen
+✅ El admin funciona (agrega /admin.html a la URL)
+✅ Los catálogos PDF se generan
+✅ Las imágenes se cargan
+
+═══════════════════════════════════════════════════════════════
+🔄 ACTUALIZAR TU SITIO EN EL FUTURO
+═══════════════════════════════════════════════════════════════
+
+Cuando hagas cambios:
+
+cd "C:\Users\MIKI\Desktop\TENDENCIA Y ESTILO"
+git add .
+git commit -m "Descripción de cambios"
+git push
+
+Netlify actualizará automáticamente en 1-2 minutos.
+
+═══════════════════════════════════════════════════════════════
+📱 COMPARTIR CON CLIENTES
+═══════════════════════════════════════════════════════════════
+
+Tienda: https://tendencia-y-estilo.netlify.app
+Admin: https://tendencia-y-estilo.netlify.app/admin.html
+
+═══════════════════════════════════════════════════════════════
+❓ PROBLEMAS COMUNES
+═══════════════════════════════════════════════════════════════
+
+"git no se reconoce"
+→ Instala Git desde: https://git-scm.com/download/win
+→ Reinicia PowerShell
+
+"Permission denied"
+→ Usa Personal Access Token en lugar de contraseña
+
+"Las imágenes no se ven"
+→ Verifica que las rutas sean: assets/imagen.jpg
+→ NO uses: C:/Users/...
+
+═══════════════════════════════════════════════════════════════
+🎯 RESUMEN RÁPIDO
+═══════════════════════════════════════════════════════════════
+
+1. PowerShell en la carpeta del proyecto
+2. git init
+3. git add .
+4. git commit -m "Primer commit"
+5. Crear repo en GitHub
+6. git remote add origin [TU-URL]
+7. git push -u origin main
+8. Netlify → Import from GitHub
+9. ¡Listo!
+
+═══════════════════════════════════════════════════════════════
+
+⏱️ Tiempo total: 15-20 minutos
+🌐 Resultado: Tu tienda en línea, gratis, para siempre
+📱 Accesible desde cualquier dispositivo
+
+¿Necesitas ayuda? ¡Pregúntame!
