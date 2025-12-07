@@ -1,0 +1,185 @@
+=================================================================
+  MENÚ HAMBURGUESA - GUÍA DE VERIFICACIÓN RÁPIDA
+=================================================================
+
+🔧 ACTUALIZACIÓN APLICADA
+
+He actualizado el código para que funcione con tu estructura actual.
+
+=================================================================
+✅ VERIFICACIÓN PASO A PASO:
+=================================================================
+
+PASO 1: LIMPIAR CACHÉ
+─────────────────────
+1. Ctrl + Shift + Delete
+2. Marcar "Imágenes y archivos en caché"
+3. Borrar datos
+4. Cerrar navegador COMPLETAMENTE
+5. Abrir de nuevo
+
+PASO 2: ABRIR DEVTOOLS
+───────────────────────
+1. Abre index.html
+2. F12 (abrir DevTools)
+3. Ctrl + Shift + M (modo móvil)
+4. Selecciona "iPhone 12 Pro"
+
+PASO 3: VERIFICAR BOTÓN
+────────────────────────
+Deberías ver:
+- Botón ☰ arriba a la derecha
+- 3 líneas horizontales
+- Al lado del logo
+
+PASO 4: ABRIR CONSOLA
+──────────────────────
+1. En DevTools, pestaña "Console"
+2. Deberías ver:
+   "Hamburger menu script loaded"
+   "Hamburger button: <button...>"
+   "Main nav: <nav...>"
+   "Overlay: <div...>"
+
+PASO 5: HACER CLIC
+──────────────────
+1. Haz clic en el botón ☰
+2. Deberías ver en consola: "Menú abierto"
+3. El menú se desliza desde la derecha
+4. Fondo oscuro aparece
+
+PASO 6: VERIFICAR MENÚ
+───────────────────────
+El menú debe mostrar:
+- Inicio
+- Productos
+- Categorías
+- Contacto
+- Admin
+- 📥 Catálogo PDF
+
+PASO 7: CERRAR MENÚ
+───────────────────
+Prueba cerrar de estas formas:
+1. Click en ✕ (botón se transforma)
+2. Click en fondo oscuro
+3. Click en cualquier link
+4. Presionar ESC
+
+=================================================================
+❌ SI NO FUNCIONA:
+=================================================================
+
+PROBLEMA 1: No veo el botón ☰
+SOLUCIÓN:
+1. Verifica que estés en modo móvil (< 768px)
+2. F12 → Ctrl+Shift+M
+3. Selecciona un dispositivo móvil
+4. Refresca con Ctrl+F5
+
+PROBLEMA 2: El botón no hace nada
+SOLUCIÓN:
+1. Abre consola (F12 → Console)
+2. Busca errores en rojo
+3. Verifica que veas los mensajes de log
+4. Si no hay mensajes, el JS no se cargó
+5. Verifica que hamburger-menu.js esté en la carpeta
+
+PROBLEMA 3: El menú no se ve
+SOLUCIÓN:
+1. Abre consola
+2. Haz clic en el botón
+3. Verifica que diga "Menú abierto"
+4. Inspecciona el elemento nav
+5. Verifica que tenga class="nav active"
+6. Si no tiene "active", hay problema con JS
+
+PROBLEMA 4: El menú se ve mal
+SOLUCIÓN:
+1. Verifica que hamburger-menu.css esté cargado
+2. F12 → Network → busca "hamburger-menu.css"
+3. Debe estar con status 200
+4. Si no aparece, el archivo no se cargó
+
+=================================================================
+🔍 DEBUG EN CONSOLA:
+=================================================================
+
+Abre consola y escribe:
+
+// Verificar elementos
+document.getElementById('hamburgerMenu')
+document.getElementById('mainNav')
+document.getElementById('navOverlay')
+
+// Abrir menú manualmente
+openMenu()
+
+// Cerrar menú manualmente
+closeMenu()
+
+// Toggle menú
+toggleMenu()
+
+=================================================================
+📱 PROBAR EN CELULAR REAL:
+=================================================================
+
+1. Sube a Netlify (si ya lo hiciste)
+2. Abre la URL en tu celular
+3. Deberías ver el botón ☰
+4. Toca para abrir
+5. Menú se desliza desde derecha
+
+=================================================================
+🎯 CHECKLIST FINAL:
+=================================================================
+
+□ Limpiaste caché
+□ Cerraste navegador
+□ Abriste de nuevo
+□ Modo móvil activado (< 768px)
+□ Ves el botón ☰
+□ Click en botón funciona
+□ Menú se desliza desde derecha
+□ Ves todos los links
+□ Fondo oscuro aparece
+□ Click en overlay cierra menú
+□ Click en link cierra menú
+□ ESC cierra menú
+□ Botón cambia a ✕
+
+=================================================================
+💡 TIPS:
+=================================================================
+
+1. SIEMPRE limpia caché primero
+2. Usa modo móvil en DevTools
+3. Revisa la consola para errores
+4. Verifica que los archivos se carguen
+5. Prueba en celular real
+
+=================================================================
+📞 SI SIGUE SIN FUNCIONAR:
+=================================================================
+
+Envíame screenshot de:
+1. La consola (F12 → Console)
+2. El modo móvil con el header visible
+3. La pestaña Network mostrando los archivos cargados
+
+Así puedo ver exactamente qué está pasando.
+
+=================================================================
+
+¡REFRESCA Y PRUEBA AHORA! 🚀
+
+1. Ctrl + Shift + Delete (limpiar caché)
+2. Cerrar navegador
+3. Abrir index.html
+4. F12 → Ctrl+Shift+M
+5. iPhone 12 Pro
+6. Click en ☰
+7. ¡Debería funcionar!
+
+=================================================================
