@@ -1,0 +1,95 @@
+=================================================================
+  MODAL Z-INDEX ARREGLADO ✅
+=================================================================
+
+🔧 PROBLEMA SOLUCIONADO
+
+El modal ahora aparece por encima de todos los elementos,
+incluyendo el menú de categorías.
+
+=================================================================
+✅ SOLUCIÓN APLICADA:
+=================================================================
+
+Z-INDEX ACTUALIZADO:
+
+.modal {
+    z-index: 9999 !important;  ← Por encima de todo
+}
+
+.modal-content {
+    z-index: 10000 !important; ← Aún más arriba
+}
+
+.modal-close {
+    z-index: 10001 !important; ← Botón cerrar arriba de todo
+}
+
+=================================================================
+🎯 JERARQUÍA DE Z-INDEX:
+=================================================================
+
+1. Elementos normales: z-index: 1-100
+2. Header/Nav: z-index: 1000
+3. Menú móvil: z-index: 1000
+4. Overlay nav: z-index: 999
+5. MODAL: z-index: 9999 ← ¡Por encima de todo!
+6. MODAL CONTENT: z-index: 10000
+7. BOTÓN CERRAR: z-index: 10001
+
+=================================================================
+📱 RESULTADO:
+=================================================================
+
+ANTES:
+┌─────────────────┐
+│  Categorías     │ ← Encima del modal ❌
+│  ┌──────────┐   │
+│  │  Modal   │   │
+│  └──────────┘   │
+└─────────────────┘
+
+AHORA:
+┌─────────────────┐
+│  ┌──────────┐   │
+│  │  Modal   │   │ ← Por encima de todo ✅
+│  │  [X]     │   │
+│  └──────────┘   │
+│  Categorías     │ ← Detrás
+└─────────────────┘
+
+=================================================================
+🔄 VERIFICAR:
+=================================================================
+
+1. Ctrl + Shift + Delete (limpiar caché)
+2. Cerrar navegador
+3. Abrir index.html
+4. F12 → Ctrl+Shift+M (móvil)
+5. iPhone 12 Pro
+6. Click en producto
+7. ✅ Modal aparece por encima
+8. ✅ Botón [X] visible arriba
+9. ✅ Todo funciona
+
+=================================================================
+✅ CARACTERÍSTICAS:
+=================================================================
+
+✅ Modal pantalla completa
+✅ Por encima de todos los elementos
+✅ Botón cerrar visible (arriba derecha)
+✅ Layout vertical en móvil
+✅ Imagen centrada (350px)
+✅ Scroll suave
+✅ Sin elementos detrás
+
+=================================================================
+
+¡REFRESCA Y PRUEBA! 🚀
+
+Ctrl + Shift + Delete → Borrar caché → F5
+
+El modal ahora aparece correctamente por encima de todo.
+
+=================================================================

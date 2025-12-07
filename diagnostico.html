@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico - Tendencia y Estilo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #d4a574;
+        }
+
+        .section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #d4a574;
+            margin-bottom: 1rem;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 0.5rem 0;
+            padding: 0.75rem;
+            background: white;
+            border-radius: 6px;
+        }
+
+        .status.ok {
+            border-left: 4px solid #28a745;
+        }
+
+        .status.error {
+            border-left: 4px solid #dc3545;
+        }
+
+        .status.warning {
+            border-left: 4px solid #ffc107;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+        }
+
+        button {
+            background: #d4a574;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+
+        button:hover {
+            background: #b8935f;
+        }
+
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .info {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border-left: 4px solid #2196f3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🔍 Diagnóstico de Tendencia y Estilo</h1>
+
+        <div class="section">
+            <h2>1. Archivos Cargados</h2>
+            <div id="filesStatus"></div>
+        </div>
+
+        <div class="section">
+            <h2>2. Productos en LocalStorage</h2>
+            <div id="productsStatus"></div>
+            <button onclick="checkProducts()">Verificar Productos</button>
+            <button onclick="createSampleProducts()">Crear Productos de Ejemplo</button>
+        </div>
+
+        <div class="section">
+            <h2>3. Elementos del DOM</h2>
+            <div id="domStatus"></div>
+            <button onclick="checkDOM()">Verificar DOM</button>
+        </div>
+
+        <div class="section">
+            <h2>4. Funciones JavaScript</h2>
+            <div id="functionsStatus"></div>
+            <button onclick="checkFunctions()">Verificar Funciones</button>
+        </div>
+
+        <div class="section">
+            <h2>5. Modal de Producto</h2>
+            <div id="modalStatus"></div>
+            <button onclick="checkModal()">Verificar Modal</button>
+        </div>
+
+        <div class="info">
+            <strong>💡 Instrucciones:</strong><br>
+            1. Haz clic en cada botón "Verificar"<br>
+            2. Si algo está en rojo, hay un problema<br>
+            3. Si todo está en verde, la tienda funciona correctamente<br>
+            4. Usa "Crear Productos de Ejemplo" si no hay productos
+        </div>
+    </div>
+
+    <script>
+        // Verificar archivos CSS
+        function checkFiles() {
+            const filesStatus = document.getElementById('filesStatus');
+            const cssFiles = [
+                'styles.css',
+                'modal-mejorado.css',
+                'mobile-responsive.css',
+                'navbar-responsive.css',
+                'modal-final-fix.css'
+            ];
+
+            let html = '';
+            cssFiles.forEach(file => {
+                const link = document.querySelector(`link[href="${file}"]`);
+                if (link) {
+                    html += `<div class="status ok"><span class="icon">✅</span> ${file} cargado</div>`;
+                } else {
+                    html += `<div class="status error"><span class="icon">❌</span> ${file} NO encontrado</div>`;
+                }
+            });
+
+            filesStatus.innerHTML = html;
+        }
+
+        // Verificar productos
+        function checkProducts() {
+            const productsStatus = document.getElementById('productsStatus');
+            const products = JSON.parse(localStorage.getItem('products') || '[]');
+
+            if (products.length === 0) {
+                productsStatus.innerHTML = `
+                    <div class="status error">
+                        <span class="icon">❌</span>
+                        <div>
+                            <strong>No hay productos</strong><br>
+                            Haz clic en "Crear Productos de Ejemplo" para agregar algunos
+                        </div>
+                    </div>
+                `;
+            } else {
+                productsStatus.innerHTML = `
+                    <div class="status ok">
+                        <span class="icon">✅</span>
+                        <div>
+                            <strong>${products.length} productos encontrados</strong><br>
+                            <pre>${JSON.stringify(products[0], null, 2).substring(0, 200)}...</pre>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Crear productos de ejemplo
+        function createSampleProducts() {
+            const sampleProducts = [
+                {
+                    id: 1,
+                    name: "Vestido Elegante Floral",
+                    category: "mujer",
+                    price: 89.99,
+                    description: "Vestido versátil y cómodo para el día a día. Diseño moderno que combina con cualquier outfit.",
+                    sizes: ["S", "M", "L"],
+                    colors: ["Blanco", "Negro", "Beige"],
+                    stock: 15,
+                    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f0f0f0' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23999'%3EVestido%3C/text%3E%3C/svg%3E",
+                    images: [
+                        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f0f0f0' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23999'%3EVestido 1%3C/text%3E%3C/svg%3E",
+                        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e0e0e0' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23999'%3EVestido 2%3C/text%3E%3C/svg%3E",
+                        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23d0d0d0' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23999'%3EVestido 3%3C/text%3E%3C/svg%3E"
+                    ]
+                },
+                {
+                    id: 2,
+                    name: "Blusa Casual Moderna",
+                    category: "mujer",
+                    price: 45.99,
+                    description: "Blusa versátil y cómoda para el día a día. Diseño moderno que combina con cualquier outfit.",
+                    sizes: ["S", "M", "L"],
+                    colors: ["Blanco", "Negro", "Beige"],
+                    stock: 9,
+                    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f5f5f5' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23999'%3EBlusa%3C/text%3E%3C/svg%3E",
+                    images: [
+                        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23f5f5f5' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23999'%3EBlusa 1%3C/text%3E%3C/svg%3E"
+                    ]
+                },
+                {
+                    id: 3,
+                    name: "Camisa Formal Ejecutiva",
+                    category: "hombre",
+                    price: 65.00,
+                    description: "Camisa formal perfecta para el trabajo. Tela de alta calidad y corte impecable.",
+                    sizes: ["M", "L", "XL"],
+                    colors: ["Blanco", "Azul", "Negro"],
+                    stock: 12,
+                    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23999'%3ECamisa%3C/text%3E%3C/svg%3E",
+                    images: [
+                        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Crect fill='%23e8e8e8' width='400' height='400'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23999'%3ECamisa 1%3C/text%3E%3C/svg%3E"
+                    ]
+                }
+            ];
+
+            localStorage.setItem('products', JSON.stringify(sampleProducts));
+            alert('✅ 3 productos de ejemplo creados!\n\nAhora ve a index.html y refresca la página (Ctrl+F5)');
+            checkProducts();
+        }
+
+        // Verificar DOM
+        function checkDOM() {
+            const domStatus = document.getElementById('domStatus');
+            const elements = [
+                'products-grid',
+                'productModal',
+                'modalImage',
+                'modalTitle',
+                'modalCategory',
+                'modalPrice',
+                'modalDescription',
+                'modalSizes',
+                'modalColors',
+                'modalStock'
+            ];
+
+            let html = '<div class="status warning"><span class="icon">⚠️</span> Esta verificación solo funciona en index.html</div>';
+            domStatus.innerHTML = html;
+        }
+
+        // Verificar funciones
+        function checkFunctions() {
+            const functionsStatus = document.getElementById('functionsStatus');
+            let html = '<div class="status warning"><span class="icon">⚠️</span> Esta verificación solo funciona en index.html</div>';
+            functionsStatus.innerHTML = html;
+        }
+
+        // Verificar modal
+        function checkModal() {
+            const modalStatus = document.getElementById('modalStatus');
+            let html = '<div class="status warning"><span class="icon">⚠️</span> Esta verificación solo funciona en index.html</div>';
+            modalStatus.innerHTML = html;
+        }
+
+        // Ejecutar al cargar
+        window.onload = function () {
+            checkFiles();
+            checkProducts();
+        };
+    </script>
+</body>
+
+</html>
