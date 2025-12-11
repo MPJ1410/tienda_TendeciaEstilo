@@ -1,0 +1,120 @@
+=== GUÍA COMPLETA: CONFIGURACIÓN DE SUPABASE ===
+
+PASO 1: CREAR CUENTA Y PROYECTO
+================================
+
+1. Ve a: https://supabase.com
+2. Haz clic en "Start your project"
+3. Inicia sesión con GitHub, Google o Email
+4. Crea un nuevo proyecto:
+   - Organization: Crea una nueva
+   - Project Name: tendencia-estilo
+   - Database Password: [GUARDA ESTA CONTRASEÑA]
+   - Region: South America (São Paulo)
+   - Pricing Plan: Free
+5. Espera 2-3 minutos mientras se crea el proyecto
+
+
+PASO 2: CREAR LAS TABLAS
+=========================
+
+1. En el panel de Supabase, ve a "SQL Editor" (menú lateral izquierdo)
+2. Haz clic en "New query"
+3. Copia TODO el código SQL del archivo "supabase-schema.sql"
+4. Pégalo en el editor
+5. Haz clic en "Run" (botón verde abajo a la derecha)
+6. Verifica que diga "Success. No rows returned"
+
+
+PASO 3: VERIFICAR LAS TABLAS
+=============================
+
+1. Ve a "Table Editor" en el menú lateral
+2. Deberías ver:
+   - products (con 8 productos)
+   - categories (con 2 categorías)
+3. Haz clic en "products" para ver los datos
+
+
+PASO 4: OBTENER CREDENCIALES
+=============================
+
+1. Ve a "Project Settings" (icono de engranaje)
+2. Ve a la sección "API"
+3. COPIA Y GUARDA estos valores:
+
+   Project URL: https://xxxxxxxxxxxxx.supabase.co
+   anon public key: eyJhbGc....... (clave muy larga)
+
+
+PASO 5: CONFIGURAR EL BUCKET DE IMÁGENES
+=========================================
+
+1. Ve a "Storage" en el menú lateral
+2. Haz clic en "New bucket"
+3. Configura:
+   - Name: product-images
+   - Public bucket: ✅ ACTIVADO
+4. Haz clic en "Create bucket"
+
+
+PASO 6: CONFIGURAR EL PROYECTO
+===============================
+
+1. Abre el archivo: supabase-config.js
+2. Reemplaza:
+   - 'TU_PROJECT_URL_AQUI' con tu Project URL
+   - 'TU_ANON_KEY_AQUI' con tu anon public key
+3. Guarda el archivo
+
+
+PASO 7: AGREGAR SUPABASE AL HTML
+=================================
+
+1. Abre index.html
+2. Antes de la línea </head>, agrega:
+
+   <!-- Supabase Client -->
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+   <script src="supabase-config.js"></script>
+
+3. Guarda el archivo
+
+
+PASO 8: PROBAR LA CONEXIÓN
+===========================
+
+1. Abre la consola del navegador (F12)
+2. Recarga la página
+3. Deberías ver: "✅ Supabase configurado correctamente"
+
+
+SIGUIENTE PASO
+==============
+
+Una vez que hayas completado estos pasos, avísame y continuaremos con:
+- Actualizar script.js para usar Supabase en lugar de localStorage
+- Actualizar admin-script.js para gestionar productos desde Supabase
+- Implementar upload de imágenes
+
+
+NOTAS IMPORTANTES
+=================
+
+✓ NUNCA compartas tu anon key públicamente
+✓ Guarda tu database password en un lugar seguro
+✓ El plan gratuito incluye:
+  - 500 MB de base de datos
+  - 1 GB de almacenamiento de archivos
+  - 2 GB de transferencia de datos
+✓ Las políticas de seguridad (RLS) ya están configuradas
+
+
+SOLUCIÓN DE PROBLEMAS
+======================
+
+Si ves errores:
+1. Verifica que copiaste las credenciales correctamente
+2. Asegúrate de que el bucket sea público
+3. Revisa la consola del navegador para más detalles
+4. Verifica que las tablas se crearon correctamente en Table Editor

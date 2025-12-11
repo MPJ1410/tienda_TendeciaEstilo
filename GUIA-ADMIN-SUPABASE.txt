@@ -1,0 +1,224 @@
+=== PANEL DE ADMINISTRACIÓN CON SUPABASE ===
+
+CAMBIOS REALIZADOS
+==================
+
+✓ admin.html actualizado con Supabase Client
+✓ admin-script.js actualizado para usar Supabase
+✓ Funciones CRUD completas:
+  - loadProducts() → Carga desde Supabase
+  - addProduct() → Guarda en Supabase
+  - updateProduct() → Actualiza en Supabase
+  - deleteProduct() → Elimina de Supabase
+
+
+FUNCIONALIDADES DEL PANEL ADMIN
+================================
+
+1. DASHBOARD
+   ✓ Total de productos
+   ✓ Productos por categoría (Mujer/Hombre)
+   ✓ Stock total
+   ✓ Gráfico de categorías
+   ✓ Lista de productos con stock bajo
+
+2. GESTIÓN DE PRODUCTOS
+   ✓ Ver todos los productos en tabla
+   ✓ Agregar nuevos productos
+   ✓ Editar productos existentes
+   ✓ Eliminar productos
+   ✓ Selector de colores visual
+   ✓ Upload de hasta 3 imágenes por producto
+
+3. INVENTARIO
+   ✓ Vista de tarjetas de productos
+   ✓ Barra de stock visual
+   ✓ Alertas de stock bajo/crítico
+
+
+CÓMO USAR EL PANEL ADMIN
+=========================
+
+PASO 1: ACCEDER AL PANEL
+-------------------------
+1. Abre: http://localhost:8000/admin.html
+2. Contraseña: soledad123
+3. Click en "Ingresar"
+
+
+PASO 2: AGREGAR UN PRODUCTO
+----------------------------
+1. Click en "Agregar Producto" (botón verde arriba)
+2. Llena el formulario:
+   - Nombre del producto *
+   - Categoría (Mujer/Hombre) *
+   - Precio *
+   - Stock *
+   - Tallas (separadas por coma) *
+   - Colores (selecciona del picker) *
+   - Descripción *
+   - Imágenes (1-3 URLs) *
+3. Click en "Guardar Producto"
+4. El producto se guarda automáticamente en Supabase
+
+
+PASO 3: EDITAR UN PRODUCTO
+---------------------------
+1. Ve a la sección "Productos"
+2. Click en el ícono de lápiz (editar)
+3. Modifica los campos que necesites
+4. Click en "Guardar Producto"
+5. Los cambios se guardan en Supabase
+
+
+PASO 4: ELIMINAR UN PRODUCTO
+-----------------------------
+1. Ve a la sección "Productos"
+2. Click en el ícono de basura (eliminar)
+3. Confirma la eliminación
+4. El producto se elimina de Supabase
+
+
+PASO 5: VER INVENTARIO
+-----------------------
+1. Click en "Inventario" en el menú lateral
+2. Verás tarjetas con:
+   - Imagen del producto
+   - Nombre y categoría
+   - Precio
+   - Tallas y colores
+   - Barra de stock visual
+
+
+CARACTERÍSTICAS ESPECIALES
+===========================
+
+SELECTOR DE COLORES
+-------------------
+- 30+ colores predefinidos
+- Click para seleccionar/deseleccionar
+- Vista previa de colores seleccionados
+- Colores con nombres en español
+
+ALERTAS DE STOCK
+----------------
+- Stock < 5: Crítico (rojo)
+- Stock < 10: Bajo (amarillo)
+- Stock >= 10: Normal (verde)
+
+GENERADOR DE CATÁLOGO PDF
+--------------------------
+- Click en "Catálogo Completo"
+- Genera PDF con todos los productos
+- Incluye imágenes, precios y detalles
+
+
+INTEGRACIÓN CON SUPABASE
+=========================
+
+VENTAJAS
+--------
+✓ Datos en la nube (accesibles desde cualquier dispositivo)
+✓ Sincronización automática
+✓ Sin límite de productos (plan gratuito: 500MB)
+✓ Backup automático
+✓ Cambios visibles inmediatamente en la tienda
+
+FLUJO DE DATOS
+--------------
+1. Admin agrega/edita producto
+2. Se guarda en Supabase
+3. La tienda (index.html) carga desde Supabase
+4. Cambios visibles para todos los usuarios
+
+
+SOLUCIÓN DE PROBLEMAS
+======================
+
+PROBLEMA: "Error al cargar productos"
+SOLUCIÓN:
+- Verifica tu conexión a internet
+- Revisa que las credenciales en supabase-config.js sean correctas
+- Abre la consola (F12) para ver el error específico
+
+PROBLEMA: "Error al guardar producto"
+SOLUCIÓN:
+- Verifica que todos los campos obligatorios (*) estén llenos
+- Asegúrate de que el precio y stock sean números válidos
+- Revisa que las tallas estén separadas por comas
+
+PROBLEMA: "No se ven los productos en la tienda"
+SOLUCIÓN:
+- Recarga la página de la tienda (index.html)
+- Verifica en Supabase que los productos estén guardados
+- Abre la consola para ver si hay errores de carga
+
+PROBLEMA: "Las imágenes no se ven"
+SOLUCIÓN:
+- Verifica que las URLs de las imágenes sean correctas
+- Asegúrate de que las imágenes estén en la carpeta assets/
+- Usa rutas relativas: assets/producto.jpg
+
+
+PRÓXIMAS MEJORAS
+=================
+
+1. UPLOAD DE IMÁGENES A SUPABASE STORAGE
+   - Subir imágenes directamente desde el panel
+   - No más rutas locales
+   - Imágenes en la nube
+
+2. AUTENTICACIÓN CON SUPABASE
+   - Login con email/password
+   - Múltiples usuarios admin
+   - Roles y permisos
+
+3. ESTADÍSTICAS AVANZADAS
+   - Productos más vistos
+   - Historial de cambios
+   - Reportes de inventario
+
+
+COMANDOS ÚTILES (CONSOLA)
+==========================
+
+// Ver todos los productos
+SupabaseService.getProducts().then(console.log)
+
+// Ver productos de mujer
+SupabaseService.getProductsByCategory('mujer').then(console.log)
+
+// Ver un producto específico
+SupabaseService.getProductById('ID_DEL_PRODUCTO').then(console.log)
+
+
+NOTAS IMPORTANTES
+=================
+
+✓ La contraseña del admin es: soledad123
+✓ Cambia la contraseña en admin-script.js (línea 2)
+✓ Todos los cambios se guardan automáticamente en Supabase
+✓ No es necesario hacer "guardar" manualmente
+✓ Los productos se sincronizan entre admin y tienda
+✓ El panel funciona en desktop y móvil
+
+
+SEGURIDAD
+=========
+
+IMPORTANTE: En producción deberías:
+1. Cambiar la contraseña del admin
+2. Implementar autenticación real con Supabase Auth
+3. Usar HTTPS
+4. Configurar Row Level Security (RLS) en Supabase
+5. Limitar acceso al panel admin por IP
+
+
+SOPORTE
+=======
+
+Si tienes problemas:
+1. Revisa la consola del navegador (F12)
+2. Verifica los logs en Supabase Dashboard
+3. Asegúrate de que las tablas existan en Supabase
+4. Confirma que las credenciales sean correctas

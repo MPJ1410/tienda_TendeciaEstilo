@@ -17,6 +17,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
 </head>
 
 <body>
@@ -32,7 +36,7 @@
                 <a href="#categorias" class="nav-link">Categorías</a>
                 <a href="#contacto" class="nav-link">Contacto</a>
                 <a href="admin.html" class="nav-link admin-link">Admin</a>
-                <button class="btn-catalog" onclick="generateCustomerCatalog()">
+                <button class="btn-catalog" onclick="generateCustomerCatalog()">sr
                     📥 Catálogo PDF
                 </button>
             </nav>
@@ -253,10 +257,12 @@
     <!-- Generador de catálogo para clientes -->
     <script src="catalog-generator.js"></script>
 
+    <!-- Supabase Service -->
+    <script src="supabase-service.js"></script>
+
     <script src="script.js"></script>
     <script src="navbar-responsive.js"></script>
 
 </body>
 
 </html>
-

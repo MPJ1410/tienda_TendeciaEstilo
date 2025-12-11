@@ -1,0 +1,249 @@
+┌─────────────────────────────────────────────────────────────┐
+│  GUÍA: AUTENTICACIÓN CON SUPABASE AUTH                       │
+│  Sistema de Login Seguro para Panel Admin                    │
+└─────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════
+  PASO 1: CONFIGURAR POLÍTICAS DE SEGURIDAD EN SUPABASE
+═══════════════════════════════════════════════════════════════
+
+1. Ve a tu proyecto en Supabase: https://app.supabase.com
+2. Ve a "SQL Editor" (menú lateral izquierdo)
+3. Click en "New query"
+4. Copia y pega el contenido de: supabase-auth-setup.sql
+5. Click en "Run" (botón verde)
+6. Deberías ver: "Success"
+
+
+═══════════════════════════════════════════════════════════════
+  PASO 2: CREAR USUARIO ADMINISTRADOR
+═══════════════════════════════════════════════════════════════
+
+OPCIÓN A: Desde la Consola del Navegador (RECOMENDADO)
+-------------------------------------------------------
+1. Abre: http://localhost:8000/admin.html
+2. Abre la consola del navegador (F12)
+3. Ejecuta este comando:
+
+AuthService.register('admin@tendenciayestilo.com', 'TuContraseñaSegura123!')
+  .then(result => {
+    if (result.success) {
+      console.log('✅ Usuario admin creado:', result.user.email);
+    } else {
+      console.error('❌ Error:', result.error);
+    }
+  });
+
+4. Espera la confirmación en la consola
+
+
+OPCIÓN B: Desde Supabase Dashboard
+-----------------------------------
+1. Ve a "Authentication" → "Users"
+2. Click en "Add user" → "Create new user"
+3. Email: admin@tendenciayestilo.com
+4. Password: TuContraseñaSegura123!
+5. Auto Confirm User: ✓ ACTIVADO
+6. Click en "Create user"
+
+
+═══════════════════════════════════════════════════════════════
+  PASO 3: PROBAR EL LOGIN
+═══════════════════════════════════════════════════════════════
+
+1. Abre: http://localhost:8000/admin.html
+2. Ingresa:
+   Email: admin@tendenciayestilo.com
+   Password: TuContraseñaSegura123!
+3. Click en "Ingresar"
+4. Deberías ver el panel de administración
+
+
+═══════════════════════════════════════════════════════════════
+  CÓMO FUNCIONA LA AUTENTICACIÓN
+═══════════════════════════════════════════════════════════════
+
+ANTES (Sistema Simple):
+-----------------------
+✗ Contraseña hardcodeada en el código
+✗ Cualquiera puede ver la contraseña en el código fuente
+✗ No hay usuarios reales
+✗ Inseguro para producción
+
+AHORA (Supabase Auth):
+----------------------
+✓ Email + Contraseña real
+✓ Contraseñas encriptadas en Supabase
+✓ Sesiones seguras con JWT
+✓ Múltiples usuarios posibles
+✓ Listo para producción
+
+
+═══════════════════════════════════════════════════════════════
+  POLÍTICAS DE SEGURIDAD (RLS)
+═══════════════════════════════════════════════════════════════
+
+LECTURA (SELECT):
+-----------------
+✓ Cualquiera puede VER productos
+✓ La tienda pública funciona sin login
+
+ESCRITURA (INSERT/UPDATE/DELETE):
+----------------------------------
+✓ Solo usuarios AUTENTICADOS pueden:
+  - Agregar productos
+  - Editar productos
+  - Eliminar productos
+
+RESULTADO:
+----------
+✓ Tienda pública: Funciona sin restricciones
+✓ Panel Admin: Requiere login con Supabase Auth
+
+
+═══════════════════════════════════════════════════════════════
+  ARCHIVOS MODIFICADOS
+═══════════════════════════════════════════════════════════════
+
+✓ auth-service.js              → Servicio de autenticación
+✓ supabase-auth-setup.sql      → Políticas de seguridad
+✓ admin.html                   → Formulario con email
+✓ admin-script.js              → Login con Supabase Auth
+
+
+═══════════════════════════════════════════════════════════════
+  FUNCIONES DEL AUTH SERVICE
+═══════════════════════════════════════════════════════════════
+
+AuthService.login(email, password)
+  → Iniciar sesión
+
+AuthService.logout()
+  → Cerrar sesión
+
+AuthService.getCurrentUser()
+  → Obtener usuario actual
+
+AuthService.isAuthenticated()
+  → Verificar si hay sesión activa
+
+AuthService.register(email, password)
+  → Crear nuevo usuario (solo para setup inicial)
+
+
+═══════════════════════════════════════════════════════════════
+  SOLUCIÓN DE PROBLEMAS
+═══════════════════════════════════════════════════════════════
+
+PROBLEMA: "Email o contraseña incorrectos"
+SOLUCIÓN:
+- Verifica que el usuario exista en Supabase
+- Ve a Authentication → Users en Supabase
+- Confirma que el email sea correcto
+- Intenta resetear la contraseña
+
+PROBLEMA: "new row violates row-level security policy"
+SOLUCIÓN:
+- Ejecuta supabase-auth-setup.sql en SQL Editor
+- Verifica que estés logueado en el admin
+- Revisa la consola para ver si hay sesión activa
+
+PROBLEMA: "No puedo crear el usuario admin"
+SOLUCIÓN:
+- Usa la Opción B (crear desde Supabase Dashboard)
+- Asegúrate de marcar "Auto Confirm User"
+- Verifica que el email sea válido
+
+PROBLEMA: "El login no funciona"
+SOLUCIÓN:
+- Abre la consola (F12)
+- Busca errores en rojo
+- Verifica que auth-service.js esté cargado
+- Confirma que la API key sea correcta
+
+
+═══════════════════════════════════════════════════════════════
+  AGREGAR MÁS ADMINISTRADORES
+═══════════════════════════════════════════════════════════════
+
+Para agregar más usuarios admin:
+
+1. Ve a Supabase Dashboard
+2. Authentication → Users
+3. Click en "Add user"
+4. Ingresa email y contraseña
+5. Auto Confirm User: ✓
+6. Create user
+
+O desde la consola:
+AuthService.register('nuevo@admin.com', 'ContraseñaSegura123!')
+
+
+═══════════════════════════════════════════════════════════════
+  SEGURIDAD EN PRODUCCIÓN
+═══════════════════════════════════════════════════════════════
+
+✓ Las contraseñas NUNCA se guardan en texto plano
+✓ Supabase usa bcrypt para encriptar contraseñas
+✓ Las sesiones usan JWT (JSON Web Tokens)
+✓ Los tokens expiran automáticamente
+✓ Las políticas RLS protegen la base de datos
+✓ Solo usuarios autenticados pueden modificar datos
+
+
+═══════════════════════════════════════════════════════════════
+  CREDENCIALES RECOMENDADAS
+═══════════════════════════════════════════════════════════════
+
+Email: admin@tendenciayestilo.com
+Password: [Elige una contraseña segura]
+
+Requisitos de contraseña:
+- Mínimo 6 caracteres
+- Combina letras y números
+- Incluye mayúsculas y minúsculas
+- Ejemplo: TendenciaEstilo2024!
+
+
+═══════════════════════════════════════════════════════════════
+  PRÓXIMOS PASOS
+═══════════════════════════════════════════════════════════════
+
+1. ✓ Ejecutar supabase-auth-setup.sql
+2. ✓ Crear usuario admin
+3. ✓ Probar login
+4. ✓ Agregar productos desde el panel
+5. ✓ Verificar que funcione la tienda pública
+
+
+═══════════════════════════════════════════════════════════════
+  COMANDOS ÚTILES (CONSOLA)
+═══════════════════════════════════════════════════════════════
+
+// Ver usuario actual
+AuthService.getCurrentUser().then(console.log)
+
+// Verificar si estoy autenticado
+AuthService.isAuthenticated().then(console.log)
+
+// Cerrar sesión
+AuthService.logout()
+
+// Crear nuevo admin
+AuthService.register('email@ejemplo.com', 'password123')
+
+
+═══════════════════════════════════════════════════════════════
+  NOTAS IMPORTANTES
+═══════════════════════════════════════════════════════════════
+
+✓ El sistema de autenticación es REAL y SEGURO
+✓ Las contraseñas están encriptadas en Supabase
+✓ Puedes tener múltiples administradores
+✓ Las sesiones persisten entre recargas
+✓ El logout cierra la sesión correctamente
+✓ La tienda pública NO requiere autenticación
+✓ Solo el panel admin requiere login
+
+
+¡Tu panel de administración ahora es SEGURO y está listo para producción! 🎉

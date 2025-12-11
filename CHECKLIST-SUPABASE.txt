@@ -1,0 +1,108 @@
+┌─────────────────────────────────────────────────────────────┐
+│  CHECKLIST: CONFIGURACIÓN DE SUPABASE PARA TENDENCIA Y ESTILO │
+└─────────────────────────────────────────────────────────────┘
+
+□ PASO 1: CREAR CUENTA EN SUPABASE
+  └─ Ir a https://supabase.com
+  └─ Registrarse con GitHub/Google/Email
+  └─ Crear organización
+
+□ PASO 2: CREAR PROYECTO
+  └─ Nombre: tendencia-estilo
+  └─ Contraseña DB: _________________ (¡Guárdala!)
+  └─ Región: South America (São Paulo)
+  └─ Plan: Free
+  └─ Esperar 2-3 minutos
+
+□ PASO 3: CREAR TABLAS
+  └─ Ir a "SQL Editor"
+  └─ Click en "New query"
+  └─ Copiar contenido de: supabase-schema.sql
+  └─ Pegar en el editor
+  └─ Click en "Run"
+  └─ Verificar: "Success. No rows returned"
+
+□ PASO 4: VERIFICAR TABLAS
+  └─ Ir a "Table Editor"
+  └─ Ver tabla "products" (debe tener 8 productos)
+  └─ Ver tabla "categories" (debe tener 2 categorías)
+
+□ PASO 5: OBTENER CREDENCIALES
+  └─ Ir a "Project Settings" → "API"
+  └─ Copiar Project URL: _________________________________
+  └─ Copiar anon public key: _________________________________
+
+□ PASO 6: CREAR BUCKET DE IMÁGENES
+  └─ Ir a "Storage"
+  └─ Click en "New bucket"
+  └─ Nombre: product-images
+  └─ Public bucket: ✓ ACTIVADO
+  └─ Click en "Create bucket"
+
+□ PASO 7: CONFIGURAR PROYECTO LOCAL
+  └─ Abrir: supabase-config.js
+  └─ Reemplazar 'TU_PROJECT_URL_AQUI' con tu URL
+  └─ Reemplazar 'TU_ANON_KEY_AQUI' con tu key
+  └─ Guardar archivo
+
+□ PASO 8: ACTUALIZAR index.html
+  └─ Abrir index.html
+  └─ Agregar antes de </head>:
+      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      <script src="supabase-config.js"></script>
+  └─ Guardar archivo
+
+□ PASO 9: ACTUALIZAR admin.html
+  └─ Abrir admin.html
+  └─ Agregar antes de </head>:
+      <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+      <script src="supabase-config.js"></script>
+  └─ Guardar archivo
+
+□ PASO 10: PROBAR CONEXIÓN
+  └─ Abrir index.html en el navegador
+  └─ Abrir consola (F12)
+  └─ Verificar mensaje: "✅ Supabase configurado correctamente"
+
+
+┌─────────────────────────────────────────────────────────────┐
+│  ARCHIVOS CREADOS                                            │
+└─────────────────────────────────────────────────────────────┘
+
+✓ supabase-schema.sql      → Código SQL para crear tablas
+✓ supabase-config.js       → Configuración de conexión
+✓ GUIA-SUPABASE.txt        → Guía detallada paso a paso
+✓ CHECKLIST-SUPABASE.txt   → Este archivo
+
+
+┌─────────────────────────────────────────────────────────────┐
+│  PRÓXIMOS PASOS (DESPUÉS DE COMPLETAR EL CHECKLIST)         │
+└─────────────────────────────────────────────────────────────┘
+
+1. Actualizar script.js para usar Supabase
+2. Actualizar admin-script.js para gestión de productos
+3. Implementar upload de imágenes a Supabase Storage
+4. Agregar autenticación para el panel admin
+5. Migrar productos existentes de localStorage a Supabase
+
+
+┌─────────────────────────────────────────────────────────────┐
+│  RECURSOS ÚTILES                                             │
+└─────────────────────────────────────────────────────────────┘
+
+• Documentación Supabase: https://supabase.com/docs
+• Dashboard Supabase: https://app.supabase.com
+• Límites Plan Gratuito:
+  - 500 MB Base de datos
+  - 1 GB Almacenamiento
+  - 2 GB Transferencia/mes
+
+
+┌─────────────────────────────────────────────────────────────┐
+│  ¿NECESITAS AYUDA?                                           │
+└─────────────────────────────────────────────────────────────┘
+
+Si tienes problemas en algún paso, avísame indicando:
+1. En qué paso estás
+2. Qué error ves
+3. Captura de pantalla si es posible

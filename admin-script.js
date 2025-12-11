@@ -1,27 +1,43 @@
-﻿// ===== Admin Password =====
-const ADMIN_PASSWORD = "soledad123";
-
-// ===== Login System =====
-document.addEventListener("DOMContentLoaded", () => {
+﻿// ===== Login System con Supabase Auth =====
+document.addEventListener("DOMContentLoaded", async () => {
     const loginForm = document.getElementById("loginForm");
     const loginScreen = document.getElementById("loginScreen");
     const adminPanel = document.getElementById("adminPanel");
+    const loginError = document.getElementById("login-error");
 
-    const isLoggedIn = sessionStorage.getItem("adminLoggedIn");
-    if (isLoggedIn === "true") {
+    // Verificar si ya hay una sesión activa
+    const isAuthenticated = await AuthService.isAuthenticated();
+    if (isAuthenticated) {
         showAdminPanel();
     }
 
+    // Manejar el formulario de login
     if (loginForm) {
-        loginForm.addEventListener("submit", (e) => {
+        loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
+            const email = document.getElementById("admin-email").value;
             const password = document.getElementById("admin-password").value;
 
-            if (password === ADMIN_PASSWORD) {
-                sessionStorage.setItem("adminLoggedIn", "true");
+            // Mostrar loading
+            const submitBtn = loginForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Ingresando...';
+            submitBtn.disabled = true;
+
+            // Intentar login
+            const result = await AuthService.login(email, password);
+
+            if (result.success) {
                 showAdminPanel();
             } else {
-                alert("Contraseña incorrecta");
+                // Mostrar error
+                if (loginError) {
+                    loginError.textContent = 'Email o contraseña incorrectos';
+                    loginError.style.display = 'block';
+                }
+                // Restaurar botón
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
                 document.getElementById("admin-password").value = "";
             }
         });
@@ -35,25 +51,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-function logout() {
-    sessionStorage.removeItem("adminLoggedIn");
-    location.reload();
+async function logout() {
+    const result = await AuthService.logout();
+    if (result.success) {
+        location.reload();
+    }
 }
 
 let products = [];
 
-function loadProducts() {
-    const savedProducts = localStorage.getItem("products");
-    if (savedProducts) {
-        products = JSON.parse(savedProducts);
+// Load products from Supabase
+async function loadProducts() {
+    try {
+        products = await SupabaseService.getProducts();
+        updateDashboard();
+        renderProductsTable();
+        renderInventory();
+        console.log(`✅ Admin: ${products.length} productos cargados desde Supabase`);
+    } catch (error) {
+        console.error('❌ Error al cargar productos en admin:', error);
+        // Fallback a localStorage
+        const savedProducts = localStorage.getItem("products");
+        if (savedProducts) {
+            products = JSON.parse(savedProducts);
+            updateDashboard();
+            renderProductsTable();
+            renderInventory();
+        }
     }
-    updateDashboard();
-    renderProductsTable();
-    renderInventory();
 }
 
+// saveProducts ya no es necesaria - Supabase guarda automáticamente
+// Mantenemos la función vacía por compatibilidad
 function saveProducts() {
-    localStorage.setItem("products", JSON.stringify(products));
+    // Deprecated - Supabase maneja la persistencia
+    console.log('ℹ️ saveProducts() ya no es necesaria con Supabase');
 }
 
 function showSection(sectionName) {
@@ -317,20 +349,32 @@ function closeProductFormModal() {
     }
 }
 
-function deleteProduct(id) {
+async function deleteProduct(id) {
     if (!confirm("¿Estás seguro de que deseas eliminar este producto?")) return;
-    products = products.filter(p => p.id !== id);
-    saveProducts();
-    updateDashboard();
-    renderProductsTable();
-    renderInventory();
+
+    try {
+        const result = await SupabaseService.deleteProduct(id);
+        if (result.success) {
+            // Actualizar array local
+            products = products.filter(p => p.id !== id);
+            updateDashboard();
+            renderProductsTable();
+            renderInventory();
+            alert('Producto eliminado correctamente');
+        } else {
+            alert('Error al eliminar el producto: ' + result.error);
+        }
+    } catch (error) {
+        console.error('❌ Error al eliminar producto:', error);
+        alert('Error al eliminar el producto');
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("productForm");
     if (!form) return;
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const id = document.getElementById("product-id").value;
         const images = [];
@@ -350,26 +394,41 @@ document.addEventListener("DOMContentLoaded", () => {
             sizes: document.getElementById("product-sizes").value.split(",").map(s => s.trim()),
             colors: selectedColors,
             description: document.getElementById("product-description").value,
-            images: images,
-            image: images[0] || ""
+            images: images
         };
 
-        if (id) {
-            const index = products.findIndex(p => p.id === parseInt(id));
-            if (index !== -1) {
-                products[index] = { ...products[index], ...productData };
+        try {
+            let result;
+            if (id) {
+                // Actualizar producto existente
+                result = await SupabaseService.updateProduct(id, productData);
+                if (result.success) {
+                    const index = products.findIndex(p => p.id === id);
+                    if (index !== -1) {
+                        products[index] = result.data;
+                    }
+                }
+            } else {
+                // Agregar nuevo producto
+                result = await SupabaseService.addProduct(productData);
+                if (result.success) {
+                    products.push(result.data);
+                }
             }
-        } else {
-            const newId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
-            products.push({ id: newId, ...productData });
-        }
 
-        saveProducts();
-        updateDashboard();
-        renderProductsTable();
-        renderInventory();
-        closeProductFormModal();
-        alert(id ? "Producto actualizado" : "Producto agregado");
+            if (result.success) {
+                updateDashboard();
+                renderProductsTable();
+                renderInventory();
+                closeProductFormModal();
+                alert(id ? "Producto actualizado correctamente" : "Producto agregado correctamente");
+            } else {
+                alert('Error: ' + result.error);
+            }
+        } catch (error) {
+            console.error('❌ Error al guardar producto:', error);
+            alert('Error al guardar el producto');
+        }
     });
 
     const modal = document.getElementById("productFormModal");

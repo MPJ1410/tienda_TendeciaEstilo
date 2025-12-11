@@ -1,0 +1,130 @@
+=== PRUEBA DE INTEGRACIÓN SUPABASE ===
+
+PASO 1: VERIFICAR QUE LAS TABLAS ESTÉN CREADAS
+===============================================
+
+1. Ve a tu proyecto en Supabase: https://app.supabase.com
+2. Ve a "Table Editor"
+3. Verifica que veas:
+   ✓ Tabla "products" con 8 productos
+   ✓ Tabla "categories" con 2 categorías
+
+Si NO ves las tablas:
+- Ve a "SQL Editor"
+- Copia el contenido de "supabase-schema.sql"
+- Pégalo y haz clic en "Run"
+
+
+PASO 2: VERIFICAR EL BUCKET DE IMÁGENES
+========================================
+
+1. Ve a "Storage" en Supabase
+2. Verifica que exista el bucket "product-images"
+3. Debe estar marcado como "Public"
+
+Si NO existe:
+- Haz clic en "New bucket"
+- Nombre: product-images
+- Public bucket: ✓ ACTIVADO
+- Click en "Create bucket"
+
+
+PASO 3: PROBAR LA CONEXIÓN
+===========================
+
+1. Abre index.html en tu navegador
+2. Abre la consola del navegador (F12)
+3. Deberías ver estos mensajes:
+
+   ✅ Supabase configurado correctamente
+   🔗 URL: https://uqndkioegzurynhijqnb.supabase.co
+   ✅ Supabase Service inicializado
+   ✅ 8 productos cargados desde Supabase
+
+Si ves errores:
+- Verifica que las credenciales en supabase-config.js sean correctas
+- Verifica que las tablas existan en Supabase
+- Revisa la consola para más detalles del error
+
+
+PASO 4: PROBAR LA VISUALIZACIÓN DE PRODUCTOS
+=============================================
+
+1. En la página principal, deberías ver 8 productos
+2. Prueba los filtros:
+   - Click en "Mujer" → Deberías ver 4 productos
+   - Click en "Hombre" → Deberías ver 4 productos
+   - Click en "Todos" → Deberías ver 8 productos
+3. Haz clic en un producto para abrir el modal
+4. Verifica que se muestre toda la información
+
+
+PASO 5: VERIFICAR EN SUPABASE
+==============================
+
+1. Ve a "Table Editor" → "products" en Supabase
+2. Deberías ver los 8 productos con toda su información
+3. Haz clic en cualquier producto para ver sus detalles
+
+
+SOLUCIÓN DE PROBLEMAS
+======================
+
+PROBLEMA: "No hay productos en Supabase"
+SOLUCIÓN:
+- Ve a SQL Editor en Supabase
+- Ejecuta el script supabase-schema.sql
+- Recarga la página
+
+PROBLEMA: "Error al cargar productos"
+SOLUCIÓN:
+- Verifica tu conexión a internet
+- Verifica las credenciales en supabase-config.js
+- Revisa la consola del navegador para más detalles
+
+PROBLEMA: "Las políticas de seguridad bloquean el acceso"
+SOLUCIÓN:
+- Ve a "Authentication" → "Policies" en Supabase
+- Verifica que las políticas de lectura pública estén habilitadas
+- Ejecuta nuevamente el script SQL
+
+
+PRÓXIMOS PASOS
+==============
+
+Una vez que confirmes que todo funciona:
+
+1. ✓ Productos se cargan desde Supabase
+2. ✓ Filtros funcionan correctamente
+3. ✓ Modal muestra información completa
+
+Continuaremos con:
+- Actualizar el panel de administración para usar Supabase
+- Implementar upload de imágenes a Supabase Storage
+- Agregar autenticación para el admin
+
+
+COMANDOS ÚTILES PARA LA CONSOLA
+================================
+
+// Ver todos los productos
+SupabaseService.getProducts().then(console.log)
+
+// Ver productos de mujer
+SupabaseService.getProductsByCategory('mujer').then(console.log)
+
+// Ver productos de hombre
+SupabaseService.getProductsByCategory('hombre').then(console.log)
+
+// Migrar desde localStorage (si tienes productos ahí)
+SupabaseService.migrateFromLocalStorage().then(console.log)
+
+
+NOTAS IMPORTANTES
+=================
+
+✓ Los productos ahora se guardan en la nube (Supabase)
+✓ Ya no se usa localStorage para productos
+✓ Los cambios son visibles desde cualquier dispositivo
+✓ La migración desde localStorage es automática
+✓ Si Supabase falla, hay fallback a localStorage

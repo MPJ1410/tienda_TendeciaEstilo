@@ -13,6 +13,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Supabase Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth-service.js"></script>
 </head>
 
 <body>
@@ -25,11 +30,15 @@
             </div>
             <form id="loginForm" class="login-form">
                 <div class="form-group">
+                    <label for="admin-email">Email</label>
+                    <input type="email" id="admin-email" placeholder="admin@tendenciayestilo.com" required autofocus>
+                </div>
+                <div class="form-group">
                     <label for="admin-password">Contraseña</label>
-                    <input type="password" id="admin-password" placeholder="Ingresa la contraseña" required autofocus>
+                    <input type="password" id="admin-password" placeholder="Ingresa tu contraseña" required>
                 </div>
                 <button type="submit" class="btn-login">Ingresar</button>
-
+                <div id="login-error" style="color: #ff4444; margin-top: 1rem; display: none;"></div>
             </form>
         </div>
     </div>
@@ -338,10 +347,11 @@
     <!-- Generador de catálogo para admin -->
     <script src="admin-catalog-generator.js"></script>
 
+    <!-- Supabase Service -->
+    <script src="supabase-service.js"></script>
+
     <script src="image-upload-handler.js"></script>
     <script src="admin-script.js"></script>
 </body>
 
 </html>
-
-

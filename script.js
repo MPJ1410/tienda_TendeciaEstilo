@@ -60,120 +60,38 @@ function getColorHex(colorName) {
     return colorMap[normalized] || '#D4A574'; // Default to primary color
 }
 
-// Load products from localStorage or use default data
-function loadProducts() {
-    const savedProducts = localStorage.getItem('products');
-    if (savedProducts) {
-        products = JSON.parse(savedProducts);
-    } else {
-        // Default sample products with colors and multiple images
-        products = [
-            {
-                id: 1,
-                name: 'Vestido Elegante Floral',
-                category: 'mujer',
-                price: 89.99,
-                sizes: ['S', 'M', 'L', 'XL'],
-                colors: ['Rosa', 'Azul', 'Blanco'],
-                stock: 15,
-                images: ['assets/product-1.jpg'],
-                image: 'assets/product-1.jpg',
-                description: 'Hermoso vestido con estampado floral, perfecto para ocasiones especiales. Confeccionado en tela de alta calidad con caída elegante.'
-            },
-            {
-                id: 2,
-                name: 'Blusa Casual Moderna',
-                category: 'mujer',
-                price: 45.99,
-                sizes: ['S', 'M', 'L'],
-                colors: ['Blanco', 'Negro', 'Beige'],
-                stock: 20,
-                images: ['assets/product-2.jpg'],
-                image: 'assets/product-2.jpg',
-                description: 'Blusa versátil y cómoda para el día a día. Diseño moderno que combina con cualquier outfit.'
-            },
-            {
-                id: 3,
-                name: 'Pantalón de Vestir',
-                category: 'mujer',
-                price: 65.99,
-                sizes: ['S', 'M', 'L', 'XL'],
-                colors: ['Negro', 'Gris', 'Azul Marino'],
-                stock: 12,
-                images: ['assets/product-3.jpg'],
-                image: 'assets/product-3.jpg',
-                description: 'Pantalón de corte elegante ideal para el trabajo o eventos formales. Tela de alta calidad con excelente caída.'
-            },
-            {
-                id: 4,
-                name: 'Camisa Formal Premium',
-                category: 'hombre',
-                price: 55.99,
-                sizes: ['M', 'L', 'XL', 'XXL'],
-                colors: ['Blanco', 'Celeste', 'Gris'],
-                stock: 18,
-                images: ['assets/product-4.jpg'],
-                image: 'assets/product-4.jpg',
-                description: 'Camisa de vestir en algodón premium. Perfecta para el trabajo o eventos formales.'
-            },
-            {
-                id: 5,
-                name: 'Polo Casual Deportivo',
-                category: 'hombre',
-                price: 35.99,
-                sizes: ['M', 'L', 'XL'],
-                colors: ['Negro', 'Azul', 'Rojo', 'Verde'],
-                stock: 25,
-                images: ['assets/product-5.jpg'],
-                image: 'assets/product-5.jpg',
-                description: 'Polo cómodo y versátil para uso diario. Tela transpirable de alta calidad.'
-            },
-            {
-                id: 6,
-                name: 'Jean Clásico',
-                category: 'hombre',
-                price: 75.99,
-                sizes: ['30', '32', '34', '36'],
-                colors: ['Azul', 'Negro', 'Gris'],
-                stock: 16,
-                images: ['assets/product-6.jpg'],
-                image: 'assets/product-6.jpg',
-                description: 'Jean de corte clásico en denim de alta calidad. Resistente y cómodo para uso diario.'
-            },
-            {
-                id: 7,
-                name: 'Conjunto Deportivo',
-                category: 'mujer',
-                price: 95.99,
-                sizes: ['S', 'M', 'L'],
-                colors: ['Negro', 'Rosa', 'Morado'],
-                stock: 10,
-                images: ['assets/product-7.jpg'],
-                image: 'assets/product-7.jpg',
-                description: 'Conjunto deportivo moderno y cómodo. Ideal para ejercicio o uso casual.'
-            },
-            {
-                id: 8,
-                name: 'Chaqueta Casual',
-                category: 'hombre',
-                price: 120.99,
-                sizes: ['M', 'L', 'XL'],
-                colors: ['Negro', 'Azul Marino', 'Café'],
-                stock: 8,
-                images: ['assets/product-8.jpg'],
-                image: 'assets/product-8.jpg',
-                description: 'Chaqueta versátil para cualquier ocasión. Diseño moderno con excelente calidad.'
+// Load products from Supabase
+async function loadProducts() {
+    try {
+        // Cargar productos desde Supabase
+        products = await SupabaseService.getProducts();
+
+        if (products.length === 0) {
+            console.log('ℹ️ No hay productos en Supabase');
+            // Intentar migrar desde localStorage si existe
+            const localProducts = localStorage.getItem('products');
+            if (localProducts) {
+                console.log('🔄 Migrando productos desde localStorage...');
+                await SupabaseService.migrateFromLocalStorage();
+                // Recargar productos después de la migración
+                products = await SupabaseService.getProducts();
             }
-        ];
-        saveProducts();
+        }
+
+        renderProducts();
+        console.log(`✅ ${products.length} productos cargados desde Supabase`);
+    } catch (error) {
+        console.error('❌ Error al cargar productos:', error);
+        // Fallback a localStorage si Supabase falla
+        const savedProducts = localStorage.getItem('products');
+        if (savedProducts) {
+            products = JSON.parse(savedProducts);
+            renderProducts();
+            console.log('⚠️ Usando productos de localStorage (fallback)');
+        }
     }
-    renderProducts();
 }
 
-// Save products to localStorage
-function saveProducts() {
-    localStorage.setItem('products', JSON.stringify(products));
-}
 
 // ===== Product Rendering =====
 function renderProducts(filter = 'todos') {
