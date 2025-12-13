@@ -444,5 +444,54 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
         closeProductFormModal();
+        closeMobileMenu();
     }
+});
+
+// ===== Mobile Menu for Admin =====
+function initAdminMobileMenu() {
+    const menuToggle = document.getElementById("adminMenuToggle");
+    const sidebar = document.querySelector(".sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+
+    if (!menuToggle || !sidebar || !overlay) return;
+
+    // Toggle menu
+    menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        sidebar.classList.toggle("active");
+        overlay.classList.toggle("active");
+        document.body.classList.toggle("menu-open");
+    });
+
+    // Close on overlay click
+    overlay.addEventListener("click", () => {
+        closeMobileMenu();
+    });
+
+    // Close on nav item click (mobile)
+    const navItems = document.querySelectorAll(".nav-item");
+    navItems.forEach(item => {
+        item.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+                closeMobileMenu();
+            }
+        });
+    });
+}
+
+function closeMobileMenu() {
+    const menuToggle = document.getElementById("adminMenuToggle");
+    const sidebar = document.querySelector(".sidebar");
+    const overlay = document.getElementById("sidebarOverlay");
+
+    if (menuToggle) menuToggle.classList.remove("active");
+    if (sidebar) sidebar.classList.remove("active");
+    if (overlay) overlay.classList.remove("active");
+    document.body.classList.remove("menu-open");
+}
+
+// Initialize mobile menu when DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+    initAdminMobileMenu();
 });

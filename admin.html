@@ -7,7 +7,6 @@
     <title>Panel de Administración - Tendencia y Estilo</title>
     <link rel="stylesheet" href="admin-styles.css">
     <link rel="stylesheet" href="admin-upload-styles.css">
-    <link rel="stylesheet" href="mobile-responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -45,6 +44,16 @@
 
     <!-- Admin Panel (Hidden until login) -->
     <div class="admin-container" id="adminPanel" style="display: none;">
+        <!-- Mobile Menu Button -->
+        <button class="admin-menu-toggle" id="adminMenuToggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Sidebar Overlay (for mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
