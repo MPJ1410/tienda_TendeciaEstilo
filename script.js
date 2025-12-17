@@ -418,25 +418,33 @@ document.addEventListener('DOMContentLoaded', () => {
 // ===== Export functions for admin panel =====
 window.productManager = {
     getProducts: () => products,
-    addProduct: (product) => {
-        product.id = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
-        products.push(product);
-        saveProducts();
-        renderProducts();
-    },
-    updateProduct: (id, updatedProduct) => {
-        const index = products.findIndex(p => p.id === id);
-        if (index !== -1) {
-            products[index] = { ...products[index], ...updatedProduct };
-            saveProducts();
+    addProduct: async (product) => {
+        const result = await SupabaseService.addProduct(product);
+        if (result.success) {
+            products.push(result.data);
             renderProducts();
         }
+        return result;
     },
-    deleteProduct: (id) => {
-        products = products.filter(p => p.id !== id);
-        saveProducts();
-        renderProducts();
+    updateProduct: async (id, updatedProduct) => {
+        const result = await SupabaseService.updateProduct(id, updatedProduct);
+        if (result.success) {
+            const index = products.findIndex(p => p.id === id);
+            if (index !== -1) {
+                products[index] = result.data;
+                renderProducts();
+            }
+        }
+        return result;
     },
-    saveProducts: saveProducts,
+    deleteProduct: async (id) => {
+        const result = await SupabaseService.deleteProduct(id);
+        if (result.success) {
+            products = products.filter(p => p.id !== id);
+            renderProducts();
+        }
+        return result;
+    },
     loadProducts: loadProducts
 };
+
