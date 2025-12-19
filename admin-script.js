@@ -165,7 +165,39 @@ function renderProductsTable() {
         return;
     }
 
-    tbody.innerHTML = products.map(product => "<tr><td><div class=\"product-image-cell\"><img src=\"" + (product.images ? product.images[0] : product.image) + "\" alt=\"" + product.name + "\" onerror=\"this.src='assets/placeholder.jpg'\"></div></td><td><strong>" + product.name + "</strong></td><td><span class=\"category-badge " + product.category + "\">" + (product.category === "mujer" ? "Mujer" : "Hombre") + "</span></td><td><div class=\"colors-cell\">" + (product.colors ? product.colors.map(color => "<span class=\"color-badge\">" + color + "</span>").join("") : "-") + "</div></td><td><strong>S/ " + (product.price || 0).toFixed(2) + "</strong></td><td><div class=\"sizes-cell\">" + (product.sizes ? product.sizes.map(size => "<span class=\"size-tag\">" + size + "</span>").join("") : "-") + "</div></td><td><span class=\"stock-cell " + ((product.stock || 0) < 5 ? "stock-critical" : (product.stock || 0) < 10 ? "stock-low" : "") + "\">" + (product.stock || 0) + "</span></td><td><div class=\"actions-cell\"><button class=\"btn-icon btn-edit\" onclick=\"editProduct(" + product.id + ")\" title=\"Editar\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\"><path d=\"M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7\"></path><path d=\"M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z\"></path></svg></button><button class=\"btn-icon btn-delete\" onclick=\"deleteProduct(" + product.id + ")\" title=\"Eliminar\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\"><polyline points=\"3 6 5 6 21 6\"></polyline><path d=\"M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2\"></path></svg></button></div></td></tr>").join("");
+    tbody.innerHTML = products.map(product => {
+        const productImage = product.images && product.images.length > 0 ? product.images[0] : (product.image || 'assets/placeholder.jpg');
+        const categoryLabel = product.category === "mujer" ? "Mujer" : "Hombre";
+        const colorsHtml = product.colors ? product.colors.map(color => `<span class="color-badge">${color}</span>`).join("") : "-";
+        const sizesHtml = product.sizes ? product.sizes.map(size => `<span class="size-tag">${size}</span>`).join("") : "-";
+        const stockClass = (product.stock || 0) < 5 ? "stock-critical" : (product.stock || 0) < 10 ? "stock-low" : "";
+
+        return `<tr>
+            <td><div class="product-image-cell"><img src="${productImage}" alt="${product.name}" onerror="this.src='assets/placeholder.jpg'"></div></td>
+            <td><strong>${product.name}</strong></td>
+            <td><span class="category-badge ${product.category}">${categoryLabel}</span></td>
+            <td><div class="colors-cell">${colorsHtml}</div></td>
+            <td><strong>S/ ${(product.price || 0).toFixed(2)}</strong></td>
+            <td><div class="sizes-cell">${sizesHtml}</div></td>
+            <td><span class="stock-cell ${stockClass}">${product.stock || 0}</span></td>
+            <td>
+                <div class="actions-cell">
+                    <button class="btn-icon btn-edit" onclick="editProduct('${product.id}')" title="Editar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </button>
+                    <button class="btn-icon btn-delete" onclick="deleteProduct('${product.id}')" title="Eliminar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
+                        </svg>
+                    </button>
+                </div>
+            </td>
+        </tr>`;
+    }).join("");
 }
 
 function renderInventory() {
